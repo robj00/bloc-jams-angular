@@ -16,6 +16,8 @@
                 {title: 'Magenta' , duration: 374.22, audioUrl: 'assets/music/magenta' }
             ]
          };
+         
+         //console.log('Fixtures service loaded', albumPicasso);
 
          var albumMarconi = {
             title: 'The Telephone',
@@ -33,7 +35,8 @@
     };
         
          Fixtures.getAlbum = function() {
-        return albumPicasso;
+             console.log('getAlbum function called:', albumPicasso);
+        return [albumPicasso];
         };
          
          Fixtures.getCollection = function(numberOfAlbums) {
