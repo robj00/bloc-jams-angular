@@ -1,7 +1,16 @@
 (function() {
+    /**
+    * @function SongPlayer
+    * @desc For playing songs
+    */      
     function SongPlayer() {
         var SongPlayer = {};
         console.log("in player service redone");
+
+        /**
+        * @desc current song playing
+        * @type {Object}
+        */   
         var currentSong = null;
         
         /**
@@ -10,22 +19,28 @@
         */     
         var currentBuzzObject = null;
         
+        
+        /* @function SongPlayer.play
+        * @desc begins playing new song, or starts curent paused song
+        * @param {Object} song
+        */      
         SongPlayer.play = function(song) {
-            console.log("in SongPlayer.play");
             if (currentSong !== song) {
-                console.log("just before currentBuzzObjectplay in service");
                 setSong(song);
-                currentBuzzObject.play();
-                song.playing = true;
+                playSong(song);
                 
                 
             } else if (currentSong === song) {
                 if (currentBuzzObject.isPaused()) {
-                    currentBuzzObject.play();
+                    playSong(song);
                 }
             }              
         };
         
+         /* @function SongPlayer.pause
+        * @desc pauses current song
+        * @param {Object} song
+        */   
         SongPlayer.pause = function(song) {
             currentBuzzObject.pause();
             song.playing = false;
@@ -49,6 +64,16 @@
  
             currentSong = song;
          };
+        
+         /* @function playSong
+        * @desc starts play with current Buss Object and sets song.playing flag to true
+        * @param {Object} song
+        */   
+        var playSong = function(song) {
+            currentBuzzObject.play();
+            song.playing = true;
+        };
+        
         
         
         return SongPlayer;
