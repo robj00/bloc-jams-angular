@@ -35,8 +35,7 @@
     };
         
          Fixtures.getAlbum = function() {
-             console.log('getAlbum function called:', albumPicasso);
-        return [albumPicasso];
+        return albumPicasso;
         };
          
          Fixtures.getCollection = function(numberOfAlbums) {
