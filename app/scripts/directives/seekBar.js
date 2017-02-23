@@ -17,8 +17,10 @@
             link: function(scope, element, attributes) {
                 scope.value = 0;
                 scope.max = 100;
- 
+                console.log(attributes);
+                console.log(element);
                 var seekBar = $(element);
+                console.log(seekBar);
                 
                 var percentString = function () {
                     var value = scope.value;
@@ -29,6 +31,10 @@
  
                 scope.fillStyle = function() {
                 return {width: percentString()};
+                };
+                
+                scope.thumbStyle = function() {
+                return {left: percentString()};
                 };
                 
                 scope.onClickSeekBar = function(event) {
