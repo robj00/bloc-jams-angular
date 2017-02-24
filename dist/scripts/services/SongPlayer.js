@@ -38,7 +38,7 @@
         * @type {Number}
         */
         SongPlayer.currentTime = null;
-        
+        SongPlayer.volume = null;
         
         SongPlayer.play = function(song) {
             song = song || SongPlayer.currentSong;
@@ -81,12 +81,6 @@
             
         };
            
-        /* @function next
-        * @desc passes player bar song name and total song duration
-        */   
-        /*/ var SongPlayer.song = 
-            
-            
          /* @function 
         * @player bar plays next song
         */   
@@ -114,6 +108,16 @@
             }
         };
         
+        /**
+        * @function setVolume
+        * @desc Set volume of currently playing song
+        * @param {number} volume
+        */
+        SongPlayer.setCurrentVolume = function(volume) {
+            if (currentBuzzObject) {
+                currentBuzzObject.setVolume(volume);
+            }
+        };       
 
         /**
         * @function setSong
@@ -135,9 +139,12 @@
                     SongPlayer.currentTime = currentBuzzObject.getTime();
                 });
             }); 
- 
+         
             SongPlayer.currentSong = song;
          };
+        if(currentBuzzObject){
+        console.log(currentBuzzObject.getVolume() + "Buzz"); }
+        console.log(SongPlayer.volume + "SP.V"); 
         
          /* @function playSong
         * @desc starts play with current Buss Object and sets song.playing flag to true
